@@ -1,14 +1,15 @@
 import unittest
 
-from shopping.user.user import User
+from returns.maybe import Nothing
+
+from shopping.address import get_street_address
+from shopping.order import User, Order
 
 
 class UserTest(unittest.TestCase):
     def test_user(self):
-        user = User(name='daniel', username='drsantos20', email='daniel@gmail.com')
-        self.assertEqual(user.name, 'daniel')
-        self.assertEqual(user.username, 'drsantos20')
-        self.assertEqual(user.email, 'daniel@gmail.com')
+        empty_address = Order(User(None))
+        self.assertEqual(get_street_address(empty_address), Nothing)
 
 
 if __name__ == '__main__':
